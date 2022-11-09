@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public float maxSpeed = 3.4f;
     public float jumpHeight = 6.5f;
     public float gravityScale = 1.5f;
-    public Camera mainCamera;
+  //  public Camera mainCamera;
 
     bool facingRight = true;
     float moveDirection = 0;
@@ -38,10 +38,10 @@ public class PlayerController : MonoBehaviour
         r2d.gravityScale = gravityScale;
         facingRight = t.localScale.x > 0;
 
-        if (mainCamera)
+     /*   if (mainCamera)
         {
             cameraPos = mainCamera.transform.position;
-        }
+        }*/
     }
 
     // Update is called once per frame
@@ -83,11 +83,11 @@ public class PlayerController : MonoBehaviour
         }
 
         // Camera follow
-        if (mainCamera)
+     /*   if (mainCamera)
         {
             mainCamera.transform.position = new Vector3(t.position.x, cameraPos.y, cameraPos.z);
         }
-
+*/
         if (speedText)
         {
             speedText.text = r2d.velocity.x.ToString("0.00");
@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
         }
         // Apply movement velocity
-        r2d.AddForce(new Vector2((moveDirection) * maxSpeed, r2d.velocity.y), ForceMode2D.Force);
+        r2d.AddForce(new Vector2((moveDirection) * maxSpeed* r2d.mass, r2d.velocity.y* r2d.mass), ForceMode2D.Force);
        // r2d.velocity = new Vector2((moveDirection) * maxSpeed, r2d.velocity.y);
         // Simple debug
       //  Debug.DrawLine(groundCheckPos, groundCheckPos - new Vector3(0, colliderRadiusX, 0), isGrounded ? Color.green : Color.red);
