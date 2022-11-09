@@ -26,9 +26,11 @@ public class TriggerTimeline : MonoBehaviour
     {
         int otherLayer = 1 << other.gameObject.layer;
         Debug.Log(otherLayer+" "+ layer);
-        if (1<<other.gameObject.layer == layer)
+        if (otherLayer == layer)
         {
             playableDirector.Play();
+            Debug.Log("change camera");
+            
         }
     }
 }

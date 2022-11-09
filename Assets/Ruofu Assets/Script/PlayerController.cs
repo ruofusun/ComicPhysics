@@ -98,9 +98,12 @@ public class PlayerController : MonoBehaviour
     {
 
         float  colliderRadiusY = mainCollider.size.y * 0.6f * Mathf.Abs(transform.localScale.y);
-        RaycastHit2D hit= Physics2D.Raycast(transform.position, -transform.up, colliderRadiusY, 1 << LayerMask.NameToLayer("Ground"));
+        RaycastHit2D hitGround= Physics2D.Raycast(transform.position, -transform.up, colliderRadiusY, 1 << LayerMask.NameToLayer("Ground"));
+        RaycastHit2D hitProps= Physics2D.Raycast(transform.position, -transform.up, colliderRadiusY, 1 << LayerMask.NameToLayer("Props"));
+        
+        
         isGrounded = false;
-        if (hit.collider)
+        if (hitGround.collider|| hitProps.collider)
         {
             isGrounded = true;
         }
