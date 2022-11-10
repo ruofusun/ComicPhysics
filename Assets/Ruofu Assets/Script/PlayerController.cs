@@ -98,8 +98,8 @@ public class PlayerController : MonoBehaviour
     {
 
         float  colliderRadiusY = mainCollider.size.y * 0.6f * Mathf.Abs(transform.localScale.y);
-        RaycastHit2D hitGround= Physics2D.Raycast(transform.position, -transform.up, colliderRadiusY, 1 << LayerMask.NameToLayer("Ground"));
-        RaycastHit2D hitProps= Physics2D.Raycast(transform.position, -transform.up, colliderRadiusY, 1 << LayerMask.NameToLayer("Props"));
+        RaycastHit2D hitGround= Physics2D.Raycast(transform.position-transform.up* colliderRadiusY, transform.right, 0.5f, 1 << LayerMask.NameToLayer("Ground"));
+        RaycastHit2D hitProps= Physics2D.Raycast(transform.position-transform.up* colliderRadiusY, transform.right, 0.5f, 1 << LayerMask.NameToLayer("Props"));
         
         
         isGrounded = false;
@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
        // r2d.velocity = new Vector2((moveDirection) * maxSpeed, r2d.velocity.y);
         // Simple debug
       //  Debug.DrawLine(groundCheckPos, groundCheckPos - new Vector3(0, colliderRadiusX, 0), isGrounded ? Color.green : Color.red);
-        Debug.DrawLine(transform.position, transform.position-transform.up*colliderRadiusY, isGrounded ? Color.green : Color.red);
+        Debug.DrawLine(transform.position-transform.up* colliderRadiusY, transform.position-transform.up* colliderRadiusY+transform.right*0.5f, isGrounded ? Color.green : Color.red);
         
     }
 }
