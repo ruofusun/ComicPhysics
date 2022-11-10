@@ -707,7 +707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 761b767bae59f441ca0f6e017a3da75c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newGameLevel: EndScene
+  newGameLevel: Ruofu's playground
 --- !u!4 &212766059
 Transform:
   m_ObjectHideFlags: 0
