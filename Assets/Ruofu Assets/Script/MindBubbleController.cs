@@ -5,6 +5,7 @@ using System.Linq;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class MindBubbleController : MonoBehaviour
 {
@@ -14,6 +15,12 @@ public class MindBubbleController : MonoBehaviour
     public Transform destination;
 
     public float duration;
+
+    public PlayableDirector endPlayableDirector;
+
+    public float addJumpForce;
+
+    private bool PlayerOnBubble = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +43,7 @@ public class MindBubbleController : MonoBehaviour
             rb2d.gravityScale = -0.05f;
         }
 */
-       centerRB.gravityScale = -0.6f;
+       centerRB.gravityScale = -0.4f;
 
     }
     
@@ -55,7 +62,39 @@ public class MindBubbleController : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            centerRB.gravityScale = -1.2f;
+            PlayerOnBubble = true;
+            centerRB.gravityScale = -1.4f;
+            Debug.Log("change gravity here");
+            endPlayableDirector.Play();
+            Rigidbody2D rb2d = other.gameObject.GetComponent<Rigidbody2D>();
+            if (rb2d )
+            {
+                rb2d.AddForce(new Vector2(0, addJumpForce), ForceMode2D.Impulse);
+                Debug.Log("add force to player here");
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            PlayerOnBubble = false;
+        }
+    }
+
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            PlayerOnBubble = true;
+            Rigidbody2D rb2d = other.gameObject.GetComponent<Rigidbody2D>();
+            if (rb2d )
+            {
+                rb2d.AddForce(new Vector2(0, addJumpForce), ForceMode2D.Impulse);
+                Debug.Log("add force to player here");
+            }
         }
     }
 }

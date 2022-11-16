@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D r2d;
     CapsuleCollider2D mainCollider;
     Transform t;
+    private Animator anim;
 
    // public Text speedText;
 
@@ -37,11 +38,12 @@ public class PlayerController : MonoBehaviour
         r2d.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         r2d.gravityScale = gravityScale;
         facingRight = t.localScale.x > 0;
+        anim = GetComponent<Animator>();
 
-     /*   if (mainCamera)
-        {
-            cameraPos = mainCamera.transform.position;
-        }*/
+        /*   if (mainCamera)
+           {
+               cameraPos = mainCamera.transform.position;
+           }*/
     }
 
     // Update is called once per frame
@@ -72,6 +74,7 @@ public class PlayerController : MonoBehaviour
             if (moveDirection < 0 && facingRight)
             {
                 facingRight = false;
+                t.localScale = new Vector3(-Mathf.Abs(t.localScale.x), t.localScale.y, transform.localScale.z);
                 speedText.rectTransform.localScale = new Vector3(Mathf.Abs( -speedText.rectTransform.localScale.x),  speedText.rectTransform.localScale.y, speedText.rectTransform.localScale.z);
             }
         }
@@ -99,20 +102,22 @@ public class PlayerController : MonoBehaviour
 
         float  colliderRadiusY = mainCollider.size.y * 0.6f * Mathf.Abs(transform.localScale.y);
         RaycastHit2D hitGround= Physics2D.Raycast(transform.position-transform.up* colliderRadiusY, transform.right, 0.5f, 1 << LayerMask.NameToLayer("Ground"));
-        RaycastHit2D hitProps= Physics2D.Raycast(transform.position-transform.up* colliderRadiusY, transform.right, 0.5f, 1 << LayerMask.NameToLayer("Props"));
-        
+        RaycastHit2D hitPropsLeft= Physics2D.Raycast(transform.position-transform.up* colliderRadiusY, -transform.right, 0.7f, 1 << LayerMask.NameToLayer("Props"));
+        RaycastHit2D hitPropsRight= Physics2D.Raycast(transform.position-transform.up* colliderRadiusY, transform.right, 0.7f, 1 << LayerMask.NameToLayer("Props"));
         
         isGrounded = false;
-        if (hitGround.collider|| hitProps.collider)
+        if (hitGround.collider|| hitPropsLeft.collider||hitPropsRight.collider)
         {
             isGrounded = true;
         }
         // Apply movement velocity
         r2d.AddForce(new Vector2((moveDirection) * maxSpeed* r2d.mass, r2d.velocity.y* r2d.mass), ForceMode2D.Force);
-       // r2d.velocity = new Vector2((moveDirection) * maxSpeed, r2d.velocity.y);
+        anim.SetFloat("Speed", Mathf.Abs(r2d.velocity.x));
+        
+        // r2d.velocity = new Vector2((moveDirection) * maxSpeed, r2d.velocity.y);
         // Simple debug
       //  Debug.DrawLine(groundCheckPos, groundCheckPos - new Vector3(0, colliderRadiusX, 0), isGrounded ? Color.green : Color.red);
-        Debug.DrawLine(transform.position-transform.up* colliderRadiusY, transform.position-transform.up* colliderRadiusY+transform.right*0.5f, isGrounded ? Color.green : Color.red);
-        
+        Debug.DrawLine(transform.position-transform.up* colliderRadiusY, transform.position-transform.up* colliderRadiusY+transform.right*0.7f, isGrounded ? Color.green : Color.red);
+        Debug.DrawLine(transform.position-transform.up* colliderRadiusY, transform.position-transform.up* colliderRadiusY-transform.right*0.7f, isGrounded ? Color.green : Color.red);
     }
 }
