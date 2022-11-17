@@ -82,7 +82,9 @@ public class PlayerController : MonoBehaviour
         // Jumping
         if (Input.GetKeyDown(KeyCode.W) && isGrounded)
         {
+            anim.SetTrigger("Jump");
             r2d.velocity = new Vector2(r2d.velocity.x, jumpHeight);
+         
         }
 
         // Camera follow

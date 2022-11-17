@@ -42,13 +42,14 @@ public class FrameTransitionTrigger : MonoBehaviour
         rb2d.gameObject.SetActive(false);
         if (rb2d.GetComponent<PlayerController>())
         {
-            rb2d.gameObject.transform.position = playerDes.position;
+            rb2d.gameObject.transform.position =
+                new Vector3(playerDes.position.x, playerDes.position.y, rb2d.transform.position.z);
             rb2d.gameObject.transform.localScale = new Vector3(PlayerScale, PlayerScale, 1);
         }
         else
         {
             if(prop)
-            rb2d.gameObject.transform.position = propDes.position;
+            rb2d.gameObject.transform.position =  new Vector3(propDes.position.x, propDes.position.y, rb2d.transform.position.z);
         }
 
         if (PD)
