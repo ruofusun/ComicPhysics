@@ -63,7 +63,7 @@ public class MindBubbleController : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             PlayerOnBubble = true;
-            centerRB.gravityScale = -1.4f;
+            centerRB.gravityScale = -1.5f;
             Debug.Log("change gravity here");
             endPlayableDirector.Play();
             Rigidbody2D rb2d = other.gameObject.GetComponent<Rigidbody2D>();

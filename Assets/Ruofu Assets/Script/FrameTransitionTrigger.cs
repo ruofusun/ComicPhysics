@@ -16,6 +16,8 @@ public class FrameTransitionTrigger : MonoBehaviour
     public float PlayerScale = 1;
 
     public PlayableDirector PD;
+
+    public float transferCD = 2f;
     // Start is called before the first frame update
     void Start()
     {
@@ -56,7 +58,7 @@ public class FrameTransitionTrigger : MonoBehaviour
         {
             PD.Play();
         }
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(transferCD);
       
 
         rb2d.gameObject.SetActive(true);
