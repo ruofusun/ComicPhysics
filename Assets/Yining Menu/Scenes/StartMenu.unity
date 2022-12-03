@@ -2542,8 +2542,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -73.899994}
-  m_SizeDelta: {x: 379.21, y: 58.12}
+  m_AnchoredPosition: {x: 0, y: -68}
+  m_SizeDelta: {x: 269.61, y: 58.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &558434406
 MonoBehaviour:
@@ -2565,7 +2565,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: UNTITLED GAME
+  m_text: Fly Away
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83a8234dc99ca431396f391c641885d4, type: 2}
   m_sharedMaterial: {fileID: 909342048043295122, guid: 83a8234dc99ca431396f391c641885d4, type: 2}
@@ -5476,7 +5476,7 @@ GameObject:
   - component: {fileID: 1517990974}
   - component: {fileID: 1517990973}
   m_Layer: 5
-  m_Name: TitleText (1)
+  m_Name: AutherText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5499,7 +5499,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -101}
+  m_AnchoredPosition: {x: 0, y: -106}
   m_SizeDelta: {x: 379.21, y: 58.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1517990973
@@ -5522,7 +5522,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: By Author Who
+  m_text: By K. Millar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83a8234dc99ca431396f391c641885d4, type: 2}
   m_sharedMaterial: {fileID: 909342048043295122, guid: 83a8234dc99ca431396f391c641885d4, type: 2}
