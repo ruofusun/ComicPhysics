@@ -15,9 +15,20 @@ public class ButterflyController : MonoBehaviour
         var sequence = DG.Tweening.DOTween.Sequence();
         sequence.Pause();
         // "Wrap" the tween
-        sequence.Append( transform.DOMove(new Vector3(des1.position.x, des1.position.y, transform.position.z), 3f));        
-        sequence.Append( transform.DOMove(new Vector3(des2.position.x, des2.position.y, transform.position.z), 6.5f));
-        sequence.Append( transform.DOMove(new Vector3(des3.position.x, des3.position.y, transform.position.z), 3f));
+        if (des1)
+        {
+            sequence.Append( transform.DOMove(new Vector3(des1.position.x, des1.position.y, transform.position.z), 3f)); 
+        }
+
+        if (des2)
+        {
+            sequence.Append( transform.DOMove(new Vector3(des2.position.x, des2.position.y, transform.position.z), 6.5f));
+        }
+
+        if (des3)
+        {
+            sequence.Append( transform.DOMove(new Vector3(des3.position.x, des3.position.y, transform.position.z), 3f));
+        }
         sequence.Play();
 
         //  transform.DOMove(des1.position, 3f);
