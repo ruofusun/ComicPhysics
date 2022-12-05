@@ -123,7 +123,7 @@ public class ButterflyController : MonoBehaviour
         {
             speed = 2f;
             GetComponent<SpriteRenderer>().sortingOrder = 1;
-            MoveLeft();
+         //   MoveLeft();
         }
 
     }
@@ -133,6 +133,29 @@ public class ButterflyController : MonoBehaviour
         if (other.gameObject.name.Contains("Pusher"))
         {
             other.GetComponent<Rigidbody2D>().velocity = new Vector2(-2, 0);
+        }
+
+        if (canPassSide)
+        {
+            speed = 1f;
+            if (other.gameObject.name.Contains("pushable"))
+            {
+                other.GetComponentInParent<RotatingFrameController>().SetRotation(false);
+                other.transform.DOMove(other.transform.position + transform.right*3, 2f);
+            }
+        }
+
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (canPassSide)
+        {
+            if (other.gameObject.name.Contains("pushable"))
+            {
+                other.GetComponentInParent<RotatingFrameController>().SetRotation(true);
+               // other.transform.DOMove(other.transform.position + transform.right*2, 2f);
+            }
         }
     }
 

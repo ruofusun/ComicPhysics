@@ -12,12 +12,18 @@ public class FrameTransitionTrigger : MonoBehaviour
 
     public Transform propDes;
 
+    public Transform butterflyDes;
+
 
     public float PlayerScale = 1;
 
     public PlayableDirector PD;
 
     public float transferCD = 2f;
+
+    public bool oneTimeOnly = false;
+
+    private bool triggered = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,17 +47,29 @@ public class FrameTransitionTrigger : MonoBehaviour
 
     IEnumerator MoveRoutine(Rigidbody2D rb2d)
     {
-        rb2d.gameObject.SetActive(false);
+        Debug.Log(rb2d.name+ "hit" + gameObject.name);
+     
         if (rb2d.GetComponent<PlayerController>())
         {
+            rb2d.gameObject.SetActive(false);
             rb2d.gameObject.transform.position =
                 new Vector3(playerDes.position.x, playerDes.position.y, rb2d.transform.position.z);
             rb2d.gameObject.transform.localScale = new Vector3(PlayerScale, PlayerScale, 1);
         }
         else
         {
-            if(prop)
-            rb2d.gameObject.transform.position =  new Vector3(propDes.position.x, propDes.position.y, rb2d.transform.position.z);
+            if (prop)
+            {
+                rb2d.gameObject.SetActive(false);
+                rb2d.gameObject.transform.position =  new Vector3(propDes.position.x, propDes.position.y, rb2d.transform.position.z);
+            }
+
+            if (rb2d.gameObject.GetComponent<ButterflyController>() && butterflyDes)
+            {
+                rb2d.gameObject.SetActive(false);
+                rb2d.gameObject.transform.position =  new Vector3(butterflyDes.position.x, butterflyDes.position.y, rb2d.transform.position.z);
+            }
+
         }
 
         if (PD)
@@ -59,9 +77,38 @@ public class FrameTransitionTrigger : MonoBehaviour
             PD.Play();
         }
         yield return new WaitForSeconds(transferCD);
-      
+        if (rb2d.GetComponent<PlayerController>())
+        {
+            rb2d.gameObject.SetActive(true);
+  
+            if (oneTimeOnly )
+            {
+                Destroy(gameObject);
+            }
+        }
+        else
+        {
+            if (prop)
+            {
+                rb2d.gameObject.SetActive(true);
+                if (oneTimeOnly )
+                {
+                    Destroy(gameObject);
+                }
+            }
+            if (rb2d.gameObject.GetComponent<ButterflyController>() && butterflyDes)
+            {
+                rb2d.gameObject.SetActive(true);
+                if (oneTimeOnly )
+                {
+                    Destroy(gameObject);
+                }
+    
+            }
 
-        rb2d.gameObject.SetActive(true);
+        }
+
+       
         
     }
 }

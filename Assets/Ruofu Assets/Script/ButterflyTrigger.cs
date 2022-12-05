@@ -8,6 +8,7 @@ public class ButterflyTrigger : MonoBehaviour
 {
     public float WaitTime = 4f;
 
+    public bool moveToSpecificPoint = true;
     public Vector3 Dir = new Vector3(1, 0, 0);
 
     private ButterflyController butterfly;
@@ -35,11 +36,18 @@ public class ButterflyTrigger : MonoBehaviour
     {
         
         yield return new WaitForSeconds(WaitTime);
-     butterfly.transform.DOMove(butterfly.transform.position+ Dir* 5, 1.5f);
-      
+        if (moveToSpecificPoint)
+        {
+            butterfly.transform.DOMove(butterfly.transform.position+ Dir* 5, 1.5f);
+        }
+        else
+        {
+            butterfly.transform.GetComponent<Rigidbody2D>().velocity = Dir;
+        }
 
-        
-        
+
+
+
     }
     
 }
