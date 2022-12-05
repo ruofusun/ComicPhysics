@@ -8,10 +8,14 @@ public class BallSpawner : MonoBehaviour
     public GameObject ball;
     public float duration = 10f;
 
+    public int BallCount = 15;
+
+    private int currentBallCount = 0;
+
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(SpawnBallRoutine());
+      //  StartCoroutine(SpawnBallRoutine());
     }
 
     // Update is called once per frame
@@ -31,5 +35,18 @@ public class BallSpawner : MonoBehaviour
         }
 
         yield break;
+    }
+
+    public bool SpawnBall(int count)
+    {
+        if (currentBallCount >= BallCount)
+            return false;
+ 
+        for (int i = 0; i < count; i++)
+        {
+            Instantiate(ball, transform.position+ new Vector3(Random.Range(-5,5), 0,0), Quaternion.identity);
+        }
+        currentBallCount += count;
+        return true;
     }
 }

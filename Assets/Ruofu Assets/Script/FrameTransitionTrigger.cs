@@ -32,7 +32,7 @@ public class FrameTransitionTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player")||other.gameObject.layer == LayerMask.NameToLayer("Props"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player")||other.gameObject.layer == LayerMask.NameToLayer("Props")||other.gameObject.layer == LayerMask.NameToLayer("Butterfly"))
         {
             StartCoroutine(MoveRoutine(other.gameObject.GetComponent<Rigidbody2D>()));
         }

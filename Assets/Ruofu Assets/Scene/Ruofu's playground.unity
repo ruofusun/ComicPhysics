@@ -466,7 +466,7 @@ GameObject:
   - component: {fileID: 18253333}
   - component: {fileID: 18253334}
   - component: {fileID: 18253335}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Butterfly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -575,6 +575,8 @@ MonoBehaviour:
   des1: {fileID: 2057904841}
   des2: {fileID: 1616598971}
   des3: {fileID: 2140097967}
+  speed: 2
+  currentScene: 0
 --- !u!1 &40244137
 GameObject:
   m_ObjectHideFlags: 0
@@ -1102,6 +1104,7 @@ MonoBehaviour:
   propDes: {fileID: 0}
   PlayerScale: 1
   PD: {fileID: 536349179}
+  transferCD: 2
 --- !u!58 &47815097
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6834,6 +6837,7 @@ MonoBehaviour:
   propDes: {fileID: 2009522987}
   PlayerScale: 3
   PD: {fileID: 2028738657}
+  transferCD: 2
 --- !u!61 &773863201
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8923,6 +8927,8 @@ MonoBehaviour:
   des1: {fileID: 2057904841}
   des2: {fileID: 1616598971}
   des3: {fileID: 2140097967}
+  speed: 2
+  currentScene: 0
 --- !u!95 &1074680204
 Animator:
   serializedVersion: 4
@@ -12466,6 +12472,7 @@ MonoBehaviour:
   propDes: {fileID: 1866960905}
   PlayerScale: 2
   PD: {fileID: 0}
+  transferCD: 2
 --- !u!1 &1519778399
 GameObject:
   m_ObjectHideFlags: 0
@@ -17482,6 +17489,7 @@ MonoBehaviour:
   propDes: {fileID: 415877200}
   PlayerScale: 5
   PD: {fileID: 0}
+  transferCD: 2
 --- !u!61 &2009592298
 BoxCollider2D:
   m_ObjectHideFlags: 0
