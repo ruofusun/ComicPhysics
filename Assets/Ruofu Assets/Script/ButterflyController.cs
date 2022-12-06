@@ -132,7 +132,7 @@ public class ButterflyController : MonoBehaviour
     {
         if (other.gameObject.name.Contains("Pusher"))
         {
-            other.GetComponent<Rigidbody2D>().velocity = new Vector2(-2, 0);
+            other.GetComponent<Rigidbody2D>().velocity = new Vector2(-6, 0);
         }
 
         if (canPassSide)
