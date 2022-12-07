@@ -1102,9 +1102,11 @@ MonoBehaviour:
   playerDes: {fileID: 1316850054}
   prop: {fileID: 0}
   propDes: {fileID: 0}
+  butterflyDes: {fileID: 0}
   PlayerScale: 1
   PD: {fileID: 536349179}
   transferCD: 2
+  oneTimeOnly: 0
 --- !u!58 &47815097
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6797,9 +6799,9 @@ GameObject:
   - component: {fileID: 773863199}
   - component: {fileID: 773863202}
   - component: {fileID: 773863201}
-  - component: {fileID: 773863200}
+  - component: {fileID: 773863203}
   m_Layer: 0
-  m_Name: frame3Trigger
+  m_Name: SceneLoader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6820,24 +6822,6 @@ Transform:
   m_Father: {fileID: 73205528}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &773863200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 773863198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 490d9dd41298dc047a81a71006b4c298, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerDes: {fileID: 2009522987}
-  prop: {fileID: 0}
-  propDes: {fileID: 2009522987}
-  PlayerScale: 3
-  PD: {fileID: 2028738657}
-  transferCD: 2
 --- !u!61 &773863201
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6916,6 +6900,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &773863203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 773863198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eae382cf8edd75245b6dcad35f3387cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToLoad: MushroomJump
 --- !u!1 &774452868
 GameObject:
   m_ObjectHideFlags: 0
@@ -7954,7 +7951,7 @@ GameObject:
   - component: {fileID: 997365934}
   m_Layer: 9
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12470,9 +12467,11 @@ MonoBehaviour:
   playerDes: {fileID: 1866960905}
   prop: {fileID: 1795202610}
   propDes: {fileID: 1866960905}
+  butterflyDes: {fileID: 0}
   PlayerScale: 2
   PD: {fileID: 0}
   transferCD: 2
+  oneTimeOnly: 0
 --- !u!1 &1519778399
 GameObject:
   m_ObjectHideFlags: 0
@@ -17487,9 +17486,11 @@ MonoBehaviour:
   playerDes: {fileID: 415877200}
   prop: {fileID: 0}
   propDes: {fileID: 415877200}
+  butterflyDes: {fileID: 0}
   PlayerScale: 5
   PD: {fileID: 0}
   transferCD: 2
+  oneTimeOnly: 0
 --- !u!61 &2009592298
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19250,6 +19251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WaitTime: 4
+  moveToSpecificPoint: 1
   Dir: {x: 1, y: 0, z: 0}
 --- !u!61 &2119840965
 BoxCollider2D:

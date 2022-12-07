@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/Ruofu Assets/Scene/Ruofu's playground.unity
     guid: dea0de90683cc7c4bbede786fea6d48c
   - enabled: 1
+    path: Assets/Ruofu Assets/Scene/MushroomJump.unity
+    guid: 7680ad23c128e1d4fba55431c44d299a
+  - enabled: 1
+    path: Assets/Ruofu Assets/Scene/ThirdFrame.unity
+    guid: 339a39d3058b5b447b20e86cc7539fa0
+  - enabled: 1
     path: Assets/Yining Menu/Scenes/EndScene.unity
     guid: 3c07041c077384c1f832a20afa5facd6
   m_configObjects: {}
