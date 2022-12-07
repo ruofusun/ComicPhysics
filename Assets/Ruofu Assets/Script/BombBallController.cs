@@ -30,4 +30,14 @@ public class BombBallController : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            anim.SetTrigger("explode");
+          //  Debug.Log("should hurt player");
+        }
+    }
 }
