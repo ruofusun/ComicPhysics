@@ -12,7 +12,7 @@ public class ShadowController : MonoBehaviour
 
     private int currentLevel = 1;
 
-    private bool canStartReduceShadow = false;
+    private bool canStartReduceShadow = true;
 
     public float unhitCoolDown = 5f;
 
@@ -41,7 +41,7 @@ public class ShadowController : MonoBehaviour
             if (timer > unhitCoolDown)
             {
                 timer = 0;
-                DecreaseShadow();
+                //DecreaseShadow();
             }
         }
     }
