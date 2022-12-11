@@ -44,22 +44,25 @@ public class BallSpawner : MonoBehaviour
     {
         if (currentBallCount >= BallCount || _shadowController.CurrentLevel == 0) 
             return false;
- 
-        for (int i = 0; i < count; i++)
+        if (currentBallCount == 0)
         {
-           // Instantiate(ball, transform.position+ new Vector3(Random.Range(-5,5), 0,ball.transform.position.z), Quaternion.identity);
-           if (i == 1)
-           {
-          
-               int rad = Random.Range(0, 2);
-                   StartCoroutine(rad==0?SpawnStarTimeRoutine(): SpawnBallTimeRoutine());
-           }
-           else
-           {
-               StartCoroutine(SpawnBallTimeRoutine());
-           }
-
-      
+            StartCoroutine(SpawnStarTimeRoutine());
+        }
+        else
+        {
+            for (int i = 0; i < count; i++)
+            {
+                // Instantiate(ball, transform.position+ new Vector3(Random.Range(-5,5), 0,ball.transform.position.z), Quaternion.identity);
+                if (i == 1)
+                {
+                    int rad = Random.Range(0, 2);
+                    StartCoroutine(rad==0?SpawnStarTimeRoutine(): SpawnBallTimeRoutine());
+                }
+                else
+                {
+                    StartCoroutine(SpawnBallTimeRoutine());
+                }
+            }
         }
         currentBallCount += count;
         return true;
@@ -73,7 +76,6 @@ public class BallSpawner : MonoBehaviour
     }
     public IEnumerator SpawnStarTimeRoutine()
     {
-     
         Instantiate(star, transform.position+ new Vector3(Random.Range(-23,23), 0,star.transform.position.z), Quaternion.identity);
         yield return new WaitForEndOfFrame();
     }

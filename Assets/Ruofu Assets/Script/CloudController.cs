@@ -15,6 +15,8 @@ public class CloudController : MonoBehaviour
     public bool verticleCloud = true;
 
     public bool moveAtStart = false;
+
+    public float upwardsGravity = -0.4f;
     // Start is called before the first frame update
     void Start()
     {
@@ -65,7 +67,7 @@ public class CloudController : MonoBehaviour
              rb2d.gravityScale = -0.05f;
          }
  */
-        rb2d.gravityScale = -0.4f;
+        rb2d.gravityScale = upwardsGravity;
 
     }
 

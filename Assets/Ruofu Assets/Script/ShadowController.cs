@@ -10,7 +10,7 @@ public class ShadowController : MonoBehaviour
 
     public SpriteRenderer sr;
 
-    private int currentLevel = 1;
+    private int currentLevel = 2;
 
     private bool canStartReduceShadow = true;
 
