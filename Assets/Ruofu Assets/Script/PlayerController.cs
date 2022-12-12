@@ -53,13 +53,13 @@ public class PlayerController : MonoBehaviour
     {
         // Movement controls
         if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) &&
-            (isGrounded || Mathf.Abs(r2d.velocity.x) > 0.01f))
+            (isGrounded || Mathf.Abs(r2d.velocity.x) > 1))
         {
             moveDirection = Input.GetKey(KeyCode.LeftArrow) ? -1 : 1;
         }
         else
         {
-            if (isGrounded || r2d.velocity.magnitude < 0.01f)
+            if (isGrounded || r2d.velocity.magnitude < 1f)
             {
                 moveDirection = 0;
             }
@@ -88,8 +88,8 @@ public class PlayerController : MonoBehaviour
         // Jumping
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            anim.SetTrigger("Jump");
-           // walkaudiosource.Stop();
+            SetJumpAnimationBasedOnMoveDirection();
+            // walkaudiosource.Stop();
             r2d.velocity = new Vector2(r2d.velocity.x * 0.3f, jumpHeight);
 
         }
@@ -126,6 +126,7 @@ public class PlayerController : MonoBehaviour
         // Apply movement velocity
         r2d.AddForce(new Vector2((moveDirection) * maxSpeed * r2d.mass, r2d.velocity.y * r2d.mass), ForceMode2D.Force);
         anim.SetFloat("Speed", Mathf.Abs(r2d.velocity.x));
+        anim.SetFloat("VerticalSpeed", r2d.velocity.y);
         if (Mathf.Abs(r2d.velocity.x) >1.2&&isGrounded&&moveDirection!=0)
         {
             if(!walkaudiosource.isPlaying)
@@ -147,5 +148,19 @@ public class PlayerController : MonoBehaviour
                 transform.position - transform.up * colliderRadiusY - transform.right * 1.5f,
                 isGrounded ? Color.cyan : Color.yellow);
         
+    }
+
+    public void SetJumpAnimationBasedOnMoveDirection()
+    {
+        if (moveDirection!=0)
+        {
+            anim.ResetTrigger("JumpUp");
+            anim.SetTrigger("Jump");
+        }
+        else
+        {
+            anim.ResetTrigger("Jump");
+            anim.SetTrigger("JumpUp");
+        }
     }
 }

@@ -39,6 +39,7 @@ public class MushroomController : MonoBehaviour
             if (transform.parent != null)
             {
                 playerRB.velocity = transform.parent.up * playerJumpBooster *playerRB.GetComponent<PlayerController>().jumpHeight;
+                playerRB.GetComponent<PlayerController>().SetJumpAnimationBasedOnMoveDirection();
             }
         
 
